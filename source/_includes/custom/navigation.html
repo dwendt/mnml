@@ -1,6 +1,26 @@
 <ul class="main-navigation">
   <li><a href="{{ root_url }}/">Blog</a></li>
-  <li><a href="{{ root_url }}/about">About</a></li>
-  <li><a href="{{ root_url }}/portfolio">Portfolio</a></li>
-  <li><a href="{{ root_url }}/archives">Archive</a></li>
+  {% for link in site.navigation %}
+      {% if forloop.index0 < 2 %}
+      <li {% if page.url == link.url %}class="active"{% endif %}><a href="{{ link.url }}">{{ link.text }}</a></li>
+      {% else %}
+        {% if forloop.index0 == 2 %}
+        <li class="burger-li">
+        <div class="menu-button">
+        <div></div>
+        <span></span>
+        <span></span>
+        <span></span>
+        </div>
+        </li>
+        <div class="responsive-menu">
+        <ul class="burger">
+        {% endif %}
+        <li {% if page.url == link.url %}class="active"{% endif %}><a href="{{ link.url }}">{{ link.text }}</a></li>
+        {% if forloop.last == true %}
+        </ul>
+        </div>
+        {% endif %}
+      {% endif %}
+  {% endfor %}
 </ul>
