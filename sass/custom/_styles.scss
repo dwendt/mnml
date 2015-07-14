@@ -369,12 +369,21 @@ h1.entry-title {
 .burger {
   overflow: visible;
   position: absolute;
+  z-index: 99999;
+  background-color: rgb(231,231,231);
 }
 
 .burger > li {
-  background-color: red;
   float: left;
   clear: left;
+}
+
+.burger > li:hover {
+  background-color: rgb(213,236,255);
+}
+
+.burger > li.active {
+  color: rgb(255,207,254);
 }
 
 .expand {
